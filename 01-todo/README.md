@@ -59,23 +59,33 @@ Inside this repo, the project for HW1 lives in the `01-todo` folder:
 The virtual environment (venv/) and local SQLite DB (db.sqlite3) are excluded via .gitignore.
 
 1. Clone the repo and go to the project folder
+```
 git clone https://github.com/<your-username>/ai-dev-tools-zoomcamp.git
 cd ai-dev-tools-zoomcamp/01-todo
+```
 
 2. Create and activate a virtual environment
+```
 python -m venv venv
 source venv/bin/activate          # macOS / Linux
 # venv\Scripts\activate           # Windows
+```
 
 3. Install dependencies
+```
 pip install -r requirements.txt
+```
 
 4. Apply migrations
+```
 python manage.py migrate
+```
 
 5. Running the App
 Start the Django development server:
+```
 python manage.py runserver
+```
 
 Then open your browser at:
 	•	http://127.0.0.1:8000/  or
@@ -88,9 +98,10 @@ You’ll see:
 
 Running Tests
 The app uses Django’s built-in test runner.
-
 To run tests:
+```
 python manage.py test
+```
 
 How AI Was Used
 
