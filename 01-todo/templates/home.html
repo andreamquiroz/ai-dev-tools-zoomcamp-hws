@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>TODO List</h2>
+
+  <!-- Create TODO form -->
+  <form method="post" style="margin-bottom: 20px; display: grid; gap: 8px;">
+      {% csrf_token %}
+      <input
+          type="text"
+          name="title"
+          placeholder="What do you need to do?"
+          required
+          style="padding: 8px 10px; border-radius: 6px; border: 1px solid #d1d5db;"
+      >
+
+      <div style="display:flex; gap:8px; align-items:center;">
+          <input
+              type="date"
+              name="due_date"
+              style="padding: 6px 8px; border-radius: 6px; border: 1px solid #d1d5db; flex:0 0 auto;"
+          >
+          <textarea
+              name="description"
+              placeholder="Optional description…"
+              rows="2"
+              style="flex:1; padding: 6px 8px; border-radius: 6px; border: 1px solid #d1d5db;"
+          ></textarea>
+      </div>
+
+      <button
+          type="submit"
+          style="
+              padding: 8px 14px;
+              border-radius: 6px;
+              border: none;
+              background: #2563eb;
+              color: white;
+              font-weight: 500;
+              cursor: pointer;
+              align-self: flex-start;
+          "
+      >
+          Add TODO
+      </button>
+  </form>
+
+  <!-- List of TODOs -->
+  <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 10px;">
+    {% for todo in todos %}
+      <li
+        style="
+          padding: 10px 12px;
+          border-radius: 8px;
+          border: 1px solid #e5e7eb;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: {% if todo.is_completed %}#ecfdf5{% else %}#ffffff{% endif %};
+        "
+      >
+        <div>
+          <div style="font-weight: 500;">
+            {% if todo.is_completed %}
+              <s>{{ todo.title }}</s>
+            {% else %}
+              {{ todo.title }}
+            {% endif %}
+          </div>
+
+          <div style="font-size: 0.85rem; color: #6b7280;">
+            {% if todo.due_date %}
+              Due: {{ todo.due_date }}
+            {% endif %}
+            {% if todo.description %}
+              {% if todo.due_date %} • {% endif %}
+              {{ todo.description }}
+            {% endif %}
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 6px;">
+          <a
+            href="{% url 'toggle_complete' todo.pk %}"
+            style="
+              font-size: 0.8rem;
+              padding: 4px 8px;
+              border-radius: 999px;
+              border: 1px solid #10b981;
+              color: #047857;
+              text-decoration: none;
+            "
+          >
+            {% if todo.is_completed %}Mark incomplete{% else %}Mark done{% endif %}
+          </a>
+
+          <a
+            href="{% url 'delete_todo' todo.pk %}"
+            style="
+              font-size: 0.8rem;
+              padding: 4px 8px;
+              border-radius: 999px;
+              border: 1px solid #f97373;
+              color: #b91c1c;
+              text-decoration: none;
+            "
+          >
+            Delete
+          </a>
+        </div>
+      </li>
+    {% empty %}
+      <li style="color:#6b7280; font-size:0.9rem;">
+        No TODOs yet — add your first one above ✨
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

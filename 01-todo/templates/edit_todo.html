@@ -1,0 +1,16 @@
+<!-- templates/edit_todo.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Edit TODO</h2>
+
+  <form method="post">
+    {% csrf_token %}
+    <input type="text" name="title" value="{{ todo.title }}" required>
+    <input type="date" name="due_date" value="{{ todo.due_date|date:'Y-m-d' }}">
+    <textarea name="description">{{ todo.description }}</textarea>
+    <button type="submit">Save changes</button>
+  </form>
+
+  <p><a href="{% url 'home' %}">Back to list</a></p>
+{% endblock %}
