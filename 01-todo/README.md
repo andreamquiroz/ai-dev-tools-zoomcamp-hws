@@ -106,17 +106,17 @@ python manage.py test
 How AI Was Used
 
 This project was intentionally built with AI assistance as part of the homework:
-	•	Setting up the Django project & app (startproject, startapp)
-	•	Designing the Todo model and migrations
-	•	Implementing views for:
-	•	Listing and creating TODOs
-	•	Toggling completion status
-	•	Deleting items
-	•	(Optional) editing items
-	•	Wiring URLs and templates
-	•	Debugging common Django errors (missing views, URL issues, migration errors)
-	•	Designing a simple but clean HTML/CSS layout for the TODO UI
-	•	Writing this README.md and requirements.txt
+	-	Setting up the Django project & app (startproject, startapp)
+	-	Designing the Todo model and migrations
+	-	Implementing views for:
+	-	Listing and creating TODOs
+	-	Toggling completion status
+	-	Deleting items
+	-	(Optional) editing items
+	-	Wiring URLs and templates
+	-	Debugging common Django errors (missing views, URL issues, migration errors)
+	-	Designing a simple but clean HTML/CSS layout for the TODO UI
+	-	Writing this README.md and requirements.txt
 
 All code was reviewed and understood by me as part of the learning process.
 
