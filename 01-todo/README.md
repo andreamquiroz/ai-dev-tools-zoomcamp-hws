@@ -4,6 +4,8 @@ This is a simple TODO application built with **Django**, as part of the **AI Dev
 
 The goal of the assignment was to build a full CRUD TODO app using an AI assistant (ChatGPT) *without needing prior Django experience*.
 
+![My To-Do App site](todo_app.png)
+
 ---
 
 ## Features
